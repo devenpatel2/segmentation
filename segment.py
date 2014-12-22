@@ -41,9 +41,7 @@ if __name__=="__main__":
     else:
         seg=Segment(args["segments"])
         label,result=seg.kmeans(image)
-    cv2.imshow("input",result)
-    cv2.imwrite("result.jpg",result)
-    result=seg.extractComponent(image,label,2)
     cv2.imshow("segmented",result)
-    cv2.imwrite("result3.jpg",np.uint8(label*(255.0/3)))
+    result=seg.extractComponent(image,label,2)
+    cv2.imshow("extracted",result)
     cv2.waitKey(0)
